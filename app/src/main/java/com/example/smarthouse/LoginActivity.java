@@ -20,7 +20,7 @@ public class LoginActivity extends AppCompatActivity {
 
     // Login function
     public void doLogin(View view) {
-        ArrayList<String> Username = new ArrayList<String>();
+        ArrayList<String> Username = new ArrayList<>();
         Username.add("Ana");
         String Password = "1234";
 

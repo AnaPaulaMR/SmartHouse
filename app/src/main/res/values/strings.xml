@@ -13,4 +13,7 @@
     <string name="music">Music</string>
     <string name="automatic_lights">Automatic Lights</string>
     <string name="refresh">Refresh</string>
+    <string name="back">Back</string>
+    <string name="time">Time</string>
+    <string name="luminosity">Luminosity</string>
 </resources>

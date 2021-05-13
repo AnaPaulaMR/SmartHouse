@@ -11,23 +11,13 @@ import com.google.android.material.appbar.MaterialToolbar;
 
 public class MainActivity extends AppCompatActivity {
 
-    private MaterialToolbar topAppBar = null;
-
-    private TextView temp = null;
-    private TextView water = null;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Initializing variables
-        topAppBar = (MaterialToolbar) findViewById(R.id.a2_topAppBar);
+        MaterialToolbar topAppBar = (MaterialToolbar) findViewById(R.id.a2_topAppBar);
 
-        temp = (TextView) findViewById(R.id.a2_text_temp);
-        water = (TextView) findViewById(R.id.a2_text_water);
-
-        // Initializing activity values
         getValues();
 
         // Defining refresh function
@@ -43,6 +33,9 @@ public class MainActivity extends AppCompatActivity {
 
     // Function for getting temperature and humidity from firebase
     void getValues() {
+        TextView temp = (TextView) findViewById(R.id.a2_text_temp);
+        TextView water = (TextView) findViewById(R.id.a2_text_water);
+
         //Check values on firebase
         double t = 0;
         double w = 0;

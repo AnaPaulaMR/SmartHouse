@@ -16,11 +16,6 @@ public class MusicActivity extends AppCompatActivity {
 
         MaterialToolbar topAppBar = findViewById(R.id.a5_topAppBar);
 
-        topAppBar.setNavigationOnClickListener (new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+        topAppBar.setNavigationOnClickListener (v -> finish());
     }
 }

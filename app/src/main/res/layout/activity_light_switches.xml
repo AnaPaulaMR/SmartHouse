@@ -30,6 +30,13 @@
         android:onClick="setValues"
         android:text="Room1" />
 
+    <View
+        android:id="@+id/a3_divider1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginHorizontal="16dp"
+        android:background="?android:attr/listDivider" />
+
     <com.google.android.material.switchmaterial.SwitchMaterial
         android:id="@+id/a3_swc_room2"
         style="@style/DefaultSwitch"
@@ -37,6 +44,13 @@
         android:layout_height="50dp"
         android:onClick="setValues"
         android:text="Room2" />
+
+    <View
+        android:id="@+id/a3_divider2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginHorizontal="16dp"
+        android:background="?android:attr/listDivider" />
 
     <com.google.android.material.switchmaterial.SwitchMaterial
         android:id="@+id/a3_swc_room3"
@@ -46,6 +60,13 @@
         android:onClick="setValues"
         android:text="Room3" />
 
+    <View
+        android:id="@+id/a3_divider3"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginHorizontal="16dp"
+        android:background="?android:attr/listDivider" />
+
     <com.google.android.material.switchmaterial.SwitchMaterial
         android:id="@+id/a3_swc_room4"
         style="@style/DefaultSwitch"
@@ -54,6 +75,13 @@
         android:onClick="setValues"
         android:text="Room4" />
 
+    <View
+        android:id="@+id/a3_divider4"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginHorizontal="16dp"
+        android:background="?android:attr/listDivider" />
+
     <com.google.android.material.switchmaterial.SwitchMaterial
         android:id="@+id/a3_swc_room5"
         style="@style/DefaultSwitch"
@@ -61,4 +89,11 @@
         android:layout_height="50dp"
         android:onClick="setValues"
         android:text="Room5" />
+
+    <View
+        android:id="@+id/a3_divider5"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginHorizontal="16dp"
+        android:background="?android:attr/listDivider" />
 </LinearLayout>

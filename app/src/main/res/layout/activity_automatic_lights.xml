@@ -7,6 +7,7 @@
     android:orientation="vertical"
     tools:context=".AutomaticLightsActivity">
 
+
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -20,4 +21,89 @@
             app:title="@string/automatic_lights" />
 
     </com.google.android.material.appbar.AppBarLayout>
+
+    <com.google.android.material.switchmaterial.SwitchMaterial
+        android:id="@+id/a4_swc_autolights"
+        style="@style/DefaultSwitch"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:onClick="setVisibility"
+        android:text="@string/automatic_lights" />
+
+    <View
+        android:id="@+id/a4_divider1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginHorizontal="16dp"
+        android:background="?android:attr/listDivider" />
+
+    <LinearLayout
+        android:id="@+id/a4_ll_autolights"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/a4_swc_time"
+            style="@style/DefaultSwitch"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:onClick="setVisibility"
+            android:text="@string/time" />
+
+        <TextView
+            android:id="@+id/a4_text_time"
+            style="@style/DefaultSwitch"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center_vertical"
+            android:onClick="showMaterialTimePicker"
+            android:textColor="#808080"
+            app:drawableEndCompat="@drawable/ic_baseline_keyboard_arrow_right_24" />
+
+        <View
+            android:id="@+id/a4_divider2"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginHorizontal="16dp"
+            android:background="?android:attr/listDivider" />
+
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/a4_swc_light"
+            style="@style/DefaultSwitch"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:onClick="setVisibility"
+            android:text="@string/luminosity" />
+
+        <LinearLayout
+            android:id="@+id/a4_ll_light"
+            style="@style/DefaultSwitch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="false">
+
+            <SeekBar
+                android:id="@+id/a4_seekBar"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <TextView
+                android:id="@+id/a4_text_light"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#808080" />
+
+        </LinearLayout>
+
+        <View
+            android:id="@+id/a4_divider3"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginHorizontal="16dp"
+            android:background="?android:attr/listDivider" />
+
+    </LinearLayout>
+
 </LinearLayout>

@@ -22,7 +22,6 @@
 
     <style name="DefaultSwitch" parent="Widget.MaterialComponents.CompoundButton.Switch">
         <item name="android:textSize">18sp</item>
-        <item name="android:background">@drawable/bottom_line</item>
         <item name="android:padding">8dp</item>
         <item name="android:layout_marginHorizontal">8dp</item>
         <item name="android:layout_marginVertical">2dp</item>

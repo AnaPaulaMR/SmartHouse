@@ -70,7 +70,6 @@ public class LightSwitchesActivity extends AppCompatActivity {
 
         if(room.isChecked() != r) {
             //change it on firebase
-            Toast.makeText(getApplicationContext(), "Changed", Toast.LENGTH_SHORT).show();
         }
 
         // Refresh values (uncomment when connected to firebase)

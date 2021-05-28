@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Smart House</string>
     <string name="username">Username</string>
     <string name="password">Password</string>
@@ -16,4 +16,9 @@
     <string name="back">Back</string>
     <string name="time">Time</string>
     <string name="luminosity">Luminosity</string>
+    <string name="room1">Room1</string>
+    <string name="room2">Room2</string>
+    <string name="room3">Room3</string>
+    <string name="room4">Room4</string>
+    <string name="room5">Room5</string>
 </resources>

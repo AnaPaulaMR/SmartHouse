@@ -18,14 +18,14 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
     }
 
-    // Login function
+    /* Login Function */
     public void doLogin(View view) {
         ArrayList<String> Username = new ArrayList<>();
         Username.add("Ana");
         String Password = "1234";
 
-        EditText txtUsername = (EditText) findViewById(R.id.a1_edit_username);
-        EditText txtPassword = (EditText) findViewById(R.id.a1_edit_password);
+        EditText txtUsername = findViewById(R.id.a1_edit_username);
+        EditText txtPassword = findViewById(R.id.a1_edit_password);
 
         String strUsername = txtUsername.getText().toString();
         String strPassword = txtPassword.getText().toString();

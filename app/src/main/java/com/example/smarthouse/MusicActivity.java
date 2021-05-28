@@ -14,6 +14,7 @@ public class MusicActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_music);
 
+        /* Initializing Toolbar */
         MaterialToolbar topAppBar = findViewById(R.id.a5_topAppBar);
 
         topAppBar.setNavigationOnClickListener (v -> finish());

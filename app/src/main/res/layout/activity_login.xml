@@ -28,30 +28,30 @@
         android:gravity="center"
         android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/a1_edit_username"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:ems="10"
-        android:hint="@string/username"
-        android:inputType="textPersonName"
-        android:autofillHints="" />
+        <EditText
+            android:id="@+id/a1_edit_username"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:ems="10"
+            android:hint="@string/username"
+            android:inputType="textPersonName"
+            android:autofillHints="" />
 
-    <EditText
-        android:id="@+id/a1_edit_password"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:ems="10"
-        android:hint="@string/password"
-        android:inputType="textPassword"
-        android:autofillHints="" />
+        <EditText
+            android:id="@+id/a1_edit_password"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:ems="10"
+            android:hint="@string/password"
+            android:inputType="textPassword"
+            android:autofillHints="" />
 
-    <Button
-        android:id="@+id/a1_btn_login"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:onClick="doLogin"
-        android:text="@string/login" />
+        <Button
+            android:id="@+id/a1_btn_login"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:onClick="doLogin"
+            android:text="@string/login" />
     </LinearLayout>
 
 </LinearLayout>

@@ -3,6 +3,7 @@ package com.example.smarthouse;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -17,6 +18,9 @@ import com.google.firebase.database.ValueEventListener;
 
 public class LightSwitchesActivity extends AppCompatActivity {
 
+    private SharedPreferences sharedPreferences;
+    private String uid;
+
     private DatabaseReference mDatabase;
 
     private SwitchMaterial swc_room1;
@@ -30,8 +34,12 @@ public class LightSwitchesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_light_switches);
 
+        /* Initializing SharedPreferences */
+        sharedPreferences = getSharedPreferences(SigninActivity.PREFERENCES, MODE_PRIVATE);
+        uid = sharedPreferences.getString(SigninActivity.USER_UID, null);
+
         /* Initializing Database */
-        mDatabase = FirebaseDatabase.getInstance().getReference("Switches");
+        mDatabase = FirebaseDatabase.getInstance().getReference(uid + "/LightSwitches");
 
         // Change if needed
         mDatabase.addValueEventListener( new ValueEventListener() {
@@ -59,7 +67,7 @@ public class LightSwitchesActivity extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 // Failed to read value
-                Log.w("Switches", "Failed to read value.", error.toException());
+                Log.w("LightSwitches", "Failed to read value.", error.toException());
             }
         });
 

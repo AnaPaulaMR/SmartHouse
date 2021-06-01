@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -18,31 +19,35 @@ import com.google.firebase.database.ValueEventListener;
 
 public class MainActivity extends AppCompatActivity {
 
-    private DatabaseReference mDatabase;
+    private SharedPreferences sharedPreferences;
+    private String uid;
 
-    private double t = 0;
-    private int w = 0;
+    private DatabaseReference mDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        /* Initializing SharedPreferences */
+        sharedPreferences = getSharedPreferences(SigninActivity.PREFERENCES, MODE_PRIVATE);
+        uid = sharedPreferences.getString(SigninActivity.USER_UID, null);
+
         /* Initializing Database */
-        mDatabase = FirebaseDatabase.getInstance().getReference("Values");
+        mDatabase = FirebaseDatabase.getInstance().getReference(uid + "/Values");
 
         // Change if needed
         mDatabase.addValueEventListener( new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                t = dataSnapshot.child("Temperature").getValue(Double.class);
-                w = dataSnapshot.child("Humidity").getValue(Integer.class);
+                double t = dataSnapshot.child("Temperature").getValue(Double.class);
+                int w = dataSnapshot.child("Humidity").getValue(Integer.class);
 
                 TextView temp = findViewById(R.id.a2_text_temp);
                 TextView water = findViewById(R.id.a2_text_water);
 
-                temp.setText(Double.toString(t));
-                water.setText(Integer.toString(w));
+                temp.setText(String.valueOf(t));
+                water.setText(String.valueOf(w));
             }
 
             @Override
@@ -50,6 +55,19 @@ public class MainActivity extends AppCompatActivity {
                 // Failed to read value
                 Log.w("Values", "Failed to read value.", error.toException());
             }
+        });
+
+        /* Initializing Toolbar */
+        MaterialToolbar topAppBar = findViewById(R.id.a2_topAppBar);
+
+        topAppBar.setOnMenuItemClickListener(item -> {
+            if (item.getItemId() == R.id.signout) {
+                SigninActivity.signOut();
+                finishAffinity();
+            } else {
+                return false;
+            }
+            return true;
         });
     }
 

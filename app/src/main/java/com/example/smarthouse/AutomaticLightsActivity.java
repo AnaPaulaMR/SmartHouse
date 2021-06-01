@@ -3,6 +3,7 @@ package com.example.smarthouse;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -21,6 +22,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class AutomaticLightsActivity extends AppCompatActivity {
+
+    private SharedPreferences sharedPreferences;
+    private String uid;
 
     private DatabaseReference mDatabase;
 
@@ -48,8 +52,12 @@ public class AutomaticLightsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_automatic_lights);
 
+        /* Initializing SharedPreferences */
+        sharedPreferences = getSharedPreferences(SigninActivity.PREFERENCES, MODE_PRIVATE);
+        uid = sharedPreferences.getString(SigninActivity.USER_UID, null);
+
         /* Initializing Database */
-        mDatabase = FirebaseDatabase.getInstance().getReference("AutomaticLights");
+        mDatabase = FirebaseDatabase.getInstance().getReference(uid + "/AutomaticLights");
 
         // Change if needed
         mDatabase.addValueEventListener( new ValueEventListener() {
@@ -59,8 +67,8 @@ public class AutomaticLightsActivity extends AppCompatActivity {
                 swcT = dataSnapshot.child("SwitchTime").getValue(Boolean.class);
                 swcL = dataSnapshot.child("SwitchLight").getValue(Boolean.class);
 
-                hour = dataSnapshot.child("Hour").getValue(Integer.class);
-                min = dataSnapshot.child("Min").getValue(Integer.class);
+                hour = dataSnapshot.child("Hours").getValue(Integer.class);
+                min = dataSnapshot.child("Minutes").getValue(Integer.class);
                 light = dataSnapshot.child("Light").getValue(Integer.class);
 
                 swcAutoLights.setChecked(swcAL);
@@ -194,8 +202,8 @@ public class AutomaticLightsActivity extends AppCompatActivity {
 
             setTime(hour, min);
 
-            mDatabase.child("Hour").setValue(hour);
-            mDatabase.child("Min").setValue(min);
+            mDatabase.child("Hours").setValue(hour);
+            mDatabase.child("Minutes").setValue(min);
         });
     }
 }

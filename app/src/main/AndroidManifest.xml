@@ -9,7 +9,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SmartHouse">
         <activity android:name=".AutomaticLightsActivity" />
-        <activity android:name=".MusicActivity" />
         <activity android:name=".LightSwitchesActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".SigninActivity">

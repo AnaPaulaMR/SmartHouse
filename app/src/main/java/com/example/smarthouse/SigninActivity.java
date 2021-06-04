@@ -156,7 +156,7 @@ public class SigninActivity extends AppCompatActivity {
             // change if needed
             mDatabase.child(uid).child("Brightness").setValue(0);
             mDatabase.child(uid).child("Values").child("Temperature").setValue(0);
-            mDatabase.child(uid).child("Values").child("Humidity").setValue(0);
+            //mDatabase.child(uid).child("Values").child("Humidity").setValue(0);
             mDatabase.child(uid).child("LightSwitches").child("Room1").setValue(false);
             mDatabase.child(uid).child("LightSwitches").child("Room2").setValue(false);
             mDatabase.child(uid).child("LightSwitches").child("Room3").setValue(false);

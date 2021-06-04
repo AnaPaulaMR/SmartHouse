@@ -60,6 +60,8 @@
 
         </LinearLayout>
 
+
+        <!--
         <LinearLayout
             android:layout_width="150dp"
             android:layout_height="50dp"
@@ -88,6 +90,8 @@
                 android:layout_weight="0.4"
                 android:text="@string/percentage" />
         </LinearLayout>
+        -->
+
 
     </LinearLayout>
 
@@ -104,13 +108,6 @@
             android:layout_height="50dp"
             android:onClick="goToLightSwitches"
             android:text="@string/light_switches" />
-
-        <Button
-            android:id="@+id/a2_btn_music"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:onClick="goToMusic"
-            android:text="@string/music" />
 
         <Button
             android:id="@+id/a2_btn_auto"

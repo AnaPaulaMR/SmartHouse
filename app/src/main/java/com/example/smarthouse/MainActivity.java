@@ -41,13 +41,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 double t = dataSnapshot.child("Temperature").getValue(Double.class);
-                int w = dataSnapshot.child("Humidity").getValue(Integer.class);
+                //int w = dataSnapshot.child("Humidity").getValue(Integer.class);
 
                 TextView temp = findViewById(R.id.a2_text_temp);
-                TextView water = findViewById(R.id.a2_text_water);
+                //TextView water = findViewById(R.id.a2_text_water);
 
-                temp.setText(String.valueOf(t));
-                water.setText(String.valueOf(w));
+                temp.setText(String.format("%.1f", t));
+                //water.setText(String.valueOf(w));
             }
 
             @Override
@@ -74,12 +74,6 @@ public class MainActivity extends AppCompatActivity {
     /* Function for going to LightSwitchesActivity */
     public void goToLightSwitches(View view) {
         Intent intent = new Intent(this, LightSwitchesActivity.class);
-        startActivity(intent);
-    }
-
-    /* Function for going to MusicActivity */
-    public void goToMusic(View view) {
-        Intent intent = new Intent(this, MusicActivity.class);
         startActivity(intent);
     }
 

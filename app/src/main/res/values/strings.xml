@@ -17,6 +17,8 @@
     <string name="music">Music</string>
     <string name="automatic_lights">Automatic Lights</string>
     <string name="time">Time</string>
+    <string name="on">Starts at:</string>
+    <string name="off">Ends at:</string>
     <string name="luminosity">Luminosity</string>
     <string name="room1">Room1</string>
     <string name="room2">Room2</string>

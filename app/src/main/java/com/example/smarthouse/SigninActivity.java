@@ -164,8 +164,10 @@ public class SigninActivity extends AppCompatActivity {
             mDatabase.child(uid).child("LightSwitches").child("Room5").setValue(false);
             mDatabase.child(uid).child("AutomaticLights").child("SwitchAutomaticLights").setValue(true);
             mDatabase.child(uid).child("AutomaticLights").child("SwitchTime").setValue(true);
-            mDatabase.child(uid).child("AutomaticLights").child("Hours").setValue(20);
-            mDatabase.child(uid).child("AutomaticLights").child("Minutes").setValue(30);
+            mDatabase.child(uid).child("AutomaticLights").child("HoursOn").setValue(20);
+            mDatabase.child(uid).child("AutomaticLights").child("MinutesOn").setValue(30);
+            mDatabase.child(uid).child("AutomaticLights").child("HoursOff").setValue(20);
+            mDatabase.child(uid).child("AutomaticLights").child("MinutesOff").setValue(30);
             mDatabase.child(uid).child("AutomaticLights").child("SwitchLight").setValue(true);
             mDatabase.child(uid).child("AutomaticLights").child("Light").setValue(30);
         } else {

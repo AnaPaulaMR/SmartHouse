@@ -34,8 +34,10 @@ public class AutomaticLightsActivity extends AppCompatActivity {
     private boolean swcT;
     private boolean swcL;
 
-    private int hour = 0;
-    private int min = 0;
+    private int hourOn = 0;
+    private int minOn = 0;
+    private int hourOff = 0;
+    private int minOff = 0;
     private int light = 0;
 
     private SwitchMaterial swcAutoLights;
@@ -43,7 +45,9 @@ public class AutomaticLightsActivity extends AppCompatActivity {
     private SwitchMaterial swcLight;
 
     private LinearLayout llAutoLights;
-    private TextView tvTime;
+    private LinearLayout llTime;
+    private TextView tvTimeOn;
+    private TextView tvTimeOff;
     private LinearLayout llLight;
     private TextView tvLight;
 
@@ -67,28 +71,31 @@ public class AutomaticLightsActivity extends AppCompatActivity {
                 swcT = dataSnapshot.child("SwitchTime").getValue(Boolean.class);
                 swcL = dataSnapshot.child("SwitchLight").getValue(Boolean.class);
 
-                hour = dataSnapshot.child("Hours").getValue(Integer.class);
-                min = dataSnapshot.child("Minutes").getValue(Integer.class);
+                hourOn = dataSnapshot.child("HoursOn").getValue(Integer.class);
+                minOn = dataSnapshot.child("MinutesOn").getValue(Integer.class);
+                hourOff = dataSnapshot.child("HoursOff").getValue(Integer.class);
+                minOff = dataSnapshot.child("MinutesOff").getValue(Integer.class);
                 light = dataSnapshot.child("Light").getValue(Integer.class);
 
                 swcAutoLights.setChecked(swcAL);
                 swcTime.setChecked(swcT);
                 swcLight.setChecked(swcL);
 
-                setTime(hour, min);
+                setTime(hourOn, minOn, tvTimeOn);
+                setTime(hourOff, minOff, tvTimeOff);
                 tvLight.setText(light + "%");
                 seekBar.setProgress(light);
 
                 if(swcAL) {
                     llAutoLights.setVisibility(View.VISIBLE);
                     if(swcT && swcL) {
-                        tvTime.setVisibility(View.VISIBLE);
+                        llTime.setVisibility(View.VISIBLE);
                         llLight.setVisibility(View.VISIBLE);
                     } else if(swcT) {
-                        tvTime.setVisibility(View.VISIBLE);
+                        llTime.setVisibility(View.VISIBLE);
                         llLight.setVisibility(View.GONE);
                     } else{
-                        tvTime.setVisibility(View.GONE);
+                        llTime.setVisibility(View.GONE);
                         llLight.setVisibility(View.VISIBLE);
                     }
                 } else {
@@ -109,7 +116,9 @@ public class AutomaticLightsActivity extends AppCompatActivity {
         swcLight = findViewById(R.id.a4_swc_light);
 
         llAutoLights = findViewById(R.id.a4_ll_autolights);
-        tvTime = findViewById(R.id.a4_text_time);
+        llTime = findViewById(R.id.a4_ll_time);
+        tvTimeOn = findViewById(R.id.a4_text_time_on);
+        tvTimeOff = findViewById(R.id.a4_text_time_off);
         llLight = findViewById(R.id.a4_ll_light);
         tvLight = findViewById(R.id.a4_text_light);
 
@@ -138,17 +147,17 @@ public class AutomaticLightsActivity extends AppCompatActivity {
     }
 
     /* Function for formatting time to text */
-    private void setTime(int h, int m) {
+    private void setTime(int h, int m, TextView t) {
         if(h < 10) {
             if(m < 10) {
-                tvTime.setText(0 + h + ":" + 0 + m);
+                t.setText("0" + h + ":0" + m);
             } else {
-                tvTime.setText(0 + h + ":" + m);
+                t.setText("0" + h + ":" + m);
             }
         } else if(m < 10) {
-            tvTime.setText(h + ":" + 0 + m);
+            t.setText(h + ":0" + m);
         } else {
-            tvTime.setText(h + ":" + m);
+            t.setText(h + ":" + m);
         }
     }
 
@@ -185,25 +194,46 @@ public class AutomaticLightsActivity extends AppCompatActivity {
         }
     }
 
-    /* Function for setting up the TimePicker */
-    public void showMaterialTimePicker(View view) {
+    /* Function for setting up the TimePickerOn */
+    public void showMaterialTimePickerOn(View view) {
         MaterialTimePicker picker = new MaterialTimePicker.Builder()
                 .setTimeFormat(TimeFormat.CLOCK_24H)
-                .setHour(hour)
-                .setMinute(min)
+                .setHour(hourOn)
+                .setMinute(minOn)
                 .setTitleText("Select time:")
                 .build();
 
-        picker.show(getSupportFragmentManager(), "timePicker");
+        picker.show(getSupportFragmentManager(), "timePickerOn");
 
         picker.addOnPositiveButtonClickListener(v -> {
-            hour = picker.getHour();
-            min = picker.getMinute();
+            hourOn = picker.getHour();
+            minOn = picker.getMinute();
 
-            setTime(hour, min);
+            setTime(hourOn, minOn, tvTimeOn);
 
-            mDatabase.child("Hours").setValue(hour);
-            mDatabase.child("Minutes").setValue(min);
+            mDatabase.child("HoursOn").setValue(hourOn);
+            mDatabase.child("MinutesOn").setValue(minOn);
+        });
+    }
+    /* Function for setting up the TimePickerOff */
+    public void showMaterialTimePickerOff(View view) {
+        MaterialTimePicker picker = new MaterialTimePicker.Builder()
+                .setTimeFormat(TimeFormat.CLOCK_24H)
+                .setHour(hourOff)
+                .setMinute(minOff)
+                .setTitleText("Select time:")
+                .build();
+
+        picker.show(getSupportFragmentManager(), "timePickerOff");
+
+        picker.addOnPositiveButtonClickListener(v -> {
+            hourOff = picker.getHour();
+            minOff = picker.getMinute();
+
+            setTime(hourOff, minOff, tvTimeOff);
+
+            mDatabase.child("HoursOff").setValue(hourOff);
+            mDatabase.child("MinutesOff").setValue(minOff);
         });
     }
 }
